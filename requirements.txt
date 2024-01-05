@@ -1,4 +1,4 @@
 torchvision
 PIL
-transformers
+transformers>=4.35.0
 numpy
