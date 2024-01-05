@@ -1,0 +1,4 @@
+torchvision
+PIL
+transformers
+numpy
