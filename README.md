@@ -1,4 +1,4 @@
-<h>Custom nodes for ComfyUI</h1>
+<h1>Custom nodes for ComfyUI</h1>
 <hr>
 <h2>Microsoft kosmos-2 for Comfyui</h2>
 
