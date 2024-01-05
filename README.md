@@ -81,4 +81,4 @@ kosmos-2 output of the above (unpixelated) image: "An image of Ivanka Trump stan
 
 <h2>Installation</h2>
 
-Unzip or git clone this repository into ComfyUI/custom_nodes folder.
+Unzip or git clone this repository into ComfyUI/custom_nodes folder and restart ComfyUI.
