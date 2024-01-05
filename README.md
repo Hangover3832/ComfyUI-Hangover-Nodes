@@ -4,3 +4,5 @@
 
 An implementation of Microsoft kosmos-2 image to text transformer.<br>
 https://huggingface.co/microsoft/kosmos-2-patch14-224
+
+This node takes a prompt that can influence the ouput, for example if you put "Very detailed, an image of" outputs more details than just "An image of".
