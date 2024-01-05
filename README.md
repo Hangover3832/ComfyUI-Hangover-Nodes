@@ -8,7 +8,7 @@ https://huggingface.co/microsoft/kosmos-2-patch14-224
 <img src="img/ComfyUI_00001_.png">
 
 This node takes a prompt that can influence the ouput, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:<br>
-<img src="img/ComfyUI_00132.jpg">
+<img src="img/ComfyUI_00132.jpg" width="400">
 kosmos-2 output: "An image of Ivanka Trump standing next to a tombstone that says Donald Trump, with a crowd of people standing behind her."
 <br>
 
