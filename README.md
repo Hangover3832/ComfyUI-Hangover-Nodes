@@ -13,7 +13,7 @@ kosmos-2 output of the above (unpixelated) image: "An image of Ivanka Trump stan
 
 <p>On the first start, the kosmos-2 model files will be downloaded from huggingface.
 <p>
-<h3>Examples:<h3>
+<h3>Examples:</h3>
 <table>
     <tr>
         <td><img src="img/00049-2467344372.jpg" width="250"></td>
