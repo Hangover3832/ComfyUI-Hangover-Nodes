@@ -2,7 +2,7 @@
 
 ## Microsoft kosmos-2 for Comfyui
 
-An implementation of Microsoft kosmos-2 image to text transformer
+An implementation of Microsoft kosmos-2 image to text transformer \
 https://huggingface.co/microsoft/kosmos-2-patch14-224
 
 ![](img/ComfyUI_00001_.png)
