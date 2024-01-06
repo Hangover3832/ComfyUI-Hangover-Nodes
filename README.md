@@ -1,19 +1,21 @@
-<h1>Custom nodes for ComfyUI</h1>
-<hr>
-<h2>Microsoft kosmos-2 for Comfyui</h2>
+# Custom nodes for ComfyUI
 
-An implementation of Microsoft kosmos-2 image to text transformer.<br>
+## Microsoft kosmos-2 for Comfyui
+
+An implementation of Microsoft kosmos-2 image to text transformer
 https://huggingface.co/microsoft/kosmos-2-patch14-224
 
-<img src="img/ComfyUI_00001_.png">
+![](img/ComfyUI_00001_.png)
 
-This node takes a prompt that can influence the ouput, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:<br>
-<img src="img/ComfyUI_00132.jpg" width="400"><br>
-kosmos-2 output of the above (unpixelated) image: "An image of Ivanka Trump standing next to a tombstone that says Donald Trump, with a crowd of people standing behind her."
+This node takes a prompt that can influence the ouput, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:
 
-<p>On the first start, the kosmos-2 model files will be downloaded from huggingface.
-<p>
-<h3>Examples:</h3>
+![](img/ComfyUI_00132.jpg)
+kosmos-2 output of the above (unpixelated) image: _An image of Ivanka Trump standing next to a tombstone that says Donald Trump, with a crowd of people standing behind her._
+
+**At the first start, the kosmos-2 model files will be downloaded from huggingface.**
+
+### Examples:
+
 <table>
     <tr>
         <td><img src="img/00049-2467344372.jpg" width="250"></td>
