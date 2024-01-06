@@ -7,6 +7,8 @@ but I don't know how to handle lists of bboxes in comfyui.
 Feel free to modify!
 
 https://github.com/Hangover3832
+
+Alex
 '''
 
 from PIL import Image
@@ -89,10 +91,3 @@ class ms_kosmos2:
 
         # return (descriptionlist, entitylist, bboxlist,)
         return (descriptionlist, entitylist,)
-
-
-# A dictionary that contains all nodes you want to export with their names
-# NOTE: names should be globally unique
-NODE_CLASS_MAPPINGS = {
-    "MS kosmos-2 Interrogator": ms_kosmos2
-}

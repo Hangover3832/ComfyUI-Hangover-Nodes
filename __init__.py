@@ -1,3 +1,7 @@
-from .ms_kosmos2 import NODE_CLASS_MAPPINGS
+from .ms_kosmos2 import ms_kosmos2
 
-__all__ = ["NODE_CLASS_MAPPINGS"]
+# A dictionary that contains all nodes you want to export with their names
+# NOTE: names should be globally unique
+NODE_CLASS_MAPPINGS = {
+    "MS kosmos-2 Interrogator": ms_kosmos2
+}
