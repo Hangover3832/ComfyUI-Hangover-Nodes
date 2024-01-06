@@ -75,13 +75,15 @@ kosmos-2 output of the above (unpixelated) image: _An image of Ivanka Trump stan
     </tr>
 </table>
 
-<hr>
+----
 
 ## Save Image w/o Metadata
 
 ![](img/workflow.png)
 
 With this save image node, you can include or exclude the ComfyUI workflow and/or extra pgn-info metadata. It is a derivation of ComfyUI's original save image node.
+
+----
 
 ## Installation
 
