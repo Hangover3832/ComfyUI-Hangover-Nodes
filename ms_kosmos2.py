@@ -20,7 +20,7 @@ model = AutoModelForVision2Seq.from_pretrained("microsoft/kosmos-2-patch14-224")
 processor = AutoProcessor.from_pretrained("microsoft/kosmos-2-patch14-224")
 # prompt = "<grounding>An image of"
 
-class ms_kosmos2:
+class MsKosmos2:
     def __init__(self):
         pass
     
