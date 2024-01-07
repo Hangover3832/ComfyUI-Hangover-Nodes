@@ -10,8 +10,8 @@ An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmo
 
 This node takes a prompt that can influence the ouput, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:
 
-![](img/ComfyUI_00132.jpg)
-kosmos-2 output of the above (unpixelated) image: _An image of Ivanka Trump standing next to a tombstone that says Donald Trump, with a crowd of people standing behind her._
+![Alt text](img/th-406341032.jpg) \
+_**kosmos-2 output:** An image of Donald Trump giving the peace sign with the words "Make America Great Again" written next to him._
 
 **At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.**
 
