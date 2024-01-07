@@ -2,6 +2,8 @@
 
 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) is the awsome stable diffusion GUI and backend.
 
+**Pleane note that this repository is a work in progress and might change anytime.**
+
 ## Microsoft kosmos-2 for Comfyui
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer
