@@ -18,7 +18,6 @@ import numpy as np
 
 model = AutoModelForVision2Seq.from_pretrained("microsoft/kosmos-2-patch14-224")
 processor = AutoProcessor.from_pretrained("microsoft/kosmos-2-patch14-224")
-# prompt = "<grounding>An image of"
 
 class MsKosmos2:
     def __init__(self):
@@ -45,8 +44,8 @@ class MsKosmos2:
     CATEGORY = "Hangover"
 
     def interrogate(self, image, prompt):
-        descriptionlist = []
-        entitylist = []
+        descriptions = ""
+        entity_str = ""
         # bboxlist = []
         for im in image:
             i = 255. * im.cpu().numpy()
@@ -65,10 +64,12 @@ class MsKosmos2:
             # By default, the generated  text is cleanup and the entities are extracted.
             description, entities = processor.post_process_generation(generated_text)
             # entities = [('a snowman', (12, 21), [(0.390625, 0.046875, 0.984375, 0.828125)]), ('a fire', (41, 47), [(0.171875, 0.015625, 0.484375, 0.890625)])]
-            descriptionlist.append(description + '\n')
 
-            elist = []
+            # This bbox entrys might be useful in ComfyUI
             # bbxlist = []
+           
+            descriptions += description + '\n'
+            elist = []
             for entity_name, (start, end), bbox in entities:
                 '''
                 bbx = bbox[0]
@@ -81,8 +82,8 @@ class MsKosmos2:
                 '''
                 elist.append(entity_name)
 
-            entitylist.append(elist)
+            entity_str += ",".join(elist)
+            entity_str += '\n'
             # bboxlist.append(bbxlist)
 
-        # return (descriptionlist, entitylist, bboxlist,)
-        return (descriptionlist, entitylist,)
+        return (descriptions, entity_str,)
