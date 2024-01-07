@@ -4,7 +4,7 @@
 
 **Pleane note that this repository is currently a work in progress and might change anytime.**
 
-## Microsoft kosmos-2 for Comfyui
+## Node: Microsoft kosmos-2 for Comfyui
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer
 
@@ -21,7 +21,7 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 
 ----
 
-## Save Image w/o Metadata
+## Node: Save Image w/o Metadata
 
 ![](img/workflow.png)
 
