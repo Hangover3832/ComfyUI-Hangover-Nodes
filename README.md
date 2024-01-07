@@ -25,7 +25,7 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 
 ![](img/workflow.png)
 
-With this custom save image node, you can include or exclude the prompt and/or the ComfyUI workflow metadata from in saved image. It is a derivation of ComfyUI's builtin save image node.
+With this custom save image node, you can include or exclude the prompt and/or the ComfyUI workflow metadata in saved image. It is a derivation of ComfyUI's builtin save image node.
 
 ----
 
