@@ -1,5 +1,7 @@
 # Custom nodes for ComfyUI
 
+[ComfyUI](https://github.com/comfyanonymous/ComfyUI) is the awsome stable diffusion GUI and backend.
+
 ## Microsoft kosmos-2 for Comfyui
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer
@@ -11,9 +13,10 @@ This node takes a prompt that can influence the ouput, for example, if you put "
 ![](img/ComfyUI_00132.jpg)
 kosmos-2 output of the above (unpixelated) image: _An image of Ivanka Trump standing next to a tombstone that says Donald Trump, with a crowd of people standing behind her._
 
-**At the first start, the kosmos-2 model files will be downloaded from huggingface.**
+**At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.**
 
 ### Examples:
+(Non cherry picked)
 
 <table>
     <tr>
@@ -75,13 +78,16 @@ kosmos-2 output of the above (unpixelated) image: _An image of Ivanka Trump stan
     </tr>
 </table>
 
+![](img/interr_combine.png)
+_**Example workflow:** generate a combination of two images_
+
 ----
 
 ## Save Image w/o Metadata
 
 ![](img/workflow.png)
 
-With this save image node, you can include or exclude the ComfyUI workflow and/or extra pgn-info metadata. It is a derivation of ComfyUI's original save image node.
+With this save image node, you can include or exclude the ComfyUI workflow and/or extra pgn-info metadata. It is a derivation of ComfyUI's builtin save image node.
 
 ----
 
