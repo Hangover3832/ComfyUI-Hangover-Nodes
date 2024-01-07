@@ -81,6 +81,8 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 ![](img/interr_combine.png)
 _**Example workflow:** generate a combination of two images_
 
+![Alt text](img/th-406341032.png)
+
 ----
 
 ## Save Image w/o Metadata
