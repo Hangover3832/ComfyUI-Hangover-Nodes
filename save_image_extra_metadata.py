@@ -18,9 +18,9 @@ class SaveImage_NoWorkflow(SaveImage):
     OUTPUT_NODE = True
     CATEGORY = "Hangover"
 
-    def save_images(self, images, filename_prefix="ComfyUI", include_prompt=False, include_extra_pnginfo=False, prompt=None, extra_pnginfo=None):
+    def save_images(self, images, filename_prefix="ComfyUI", include_prompt=False, include_workflow=False, prompt=None, extra_pnginfo=None):
         if not include_prompt:
             prompt = None
-        if not include_extra_pnginfo:
+        if not include_workflow:
             extra_pnginfo = None
         return(super().save_images(images, filename_prefix, prompt, extra_pnginfo))
