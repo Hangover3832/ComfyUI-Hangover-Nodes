@@ -6,7 +6,7 @@ class SaveImage_NoWorkflow(SaveImage):
         return {"required": 
                     {"images": ("IMAGE", ), "filename_prefix": ("STRING", {"default": "ComfyUI"}),
                     "include_prompt": ("BOOLEAN", {"default": "false"}),
-                    "include_extra_pnginfo": ("BOOLEAN", {"default": "false"}),
+                    "include_workflow": ("BOOLEAN", {"default": "false"}),
                     },
                     
                 "hidden": 
