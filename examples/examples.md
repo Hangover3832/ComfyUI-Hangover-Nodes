@@ -63,7 +63,7 @@
 
 ---
 
-![](../img/interr_combine.png)
+![](../img/interr_combine.png) \
 _**Example workflow:** generate a combination of two images_
 
 ---
@@ -72,7 +72,7 @@ _**Example workflow:** generate a combination of two images_
 
 ---
 
-![Alt text](../img/batch_process.png)
+![Alt text](../img/batch_process.png) \
 _**Batch process images from a directory:** Set the Image Index node to 0 and auto increment, and activate "Auto Queue". ComfyUI will stop with an error when finished._
 
 ---
