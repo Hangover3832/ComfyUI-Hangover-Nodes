@@ -4,7 +4,12 @@
 
 **Pleane note that this repository is currently a work in progress and might change anytime.**
 
-## Node: Microsoft kosmos-2 for Comfyui
+## Nodes:
+- Kosmos-2: Grounding Multimodal Large Language Models to the World 
+- Save Image with or wothout Metadata
+- Scale an Image To A Bounding Box
+
+### Node: Microsoft kosmos-2 for Comfyui
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer
 
@@ -21,13 +26,18 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 
 ----
 
-## Node: Save Image w/o Metadata
+### Node: Save Image w/o Metadata
 
 ![](img/workflow.png)
 
 With this custom save image node, you can include or exclude the prompt and/or the ComfyUI workflow metadata in the saved image. It is a derivation of ComfyUI's builtin save image node.
 
-----
+---
+
+### Node: Scale Image To Bounding Box
+This node scales an input image to a given box size whereby the aspect ratio keeps retained.
+
+---
 
 ## Installation
 
