@@ -35,7 +35,10 @@ With this custom save image node, you can include or exclude the prompt and/or t
 ---
 
 ### Node: Scale Image To Bounding Box
+
 This node scales an input image to a given box size whereby the aspect ratio keeps retained.
+
+![Alt text](img/bounding_box.png)
 
 ---
 
