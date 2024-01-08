@@ -2,7 +2,7 @@
 
 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) is the awsome stable diffusion GUI and backend.
 
-**Pleane note that this repository is currently a work in progress and might change anytime.** It has been tested in Windows 10 only so far.
+**Please note that this repository is currently a work in progress and might change anytime.** It has been tested in Windows 10 only so far.
 
 ## Nodes:
 - Kosmos-2: Grounding Multimodal Large Language Models to the World 
