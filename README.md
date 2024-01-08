@@ -2,7 +2,7 @@
 
 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) is the awsome stable diffusion GUI and backend.
 
-**Pleane note that this repository is currently a work in progress and might change anytime.**
+**Pleane note that this repository is currently a work in progress and might change anytime.** It has been tested in Windows 10 only so far.
 
 ## Nodes:
 - Kosmos-2: Grounding Multimodal Large Language Models to the World 
@@ -11,7 +11,7 @@
 
 ### Node: Microsoft kosmos-2 for Comfyui
 
-An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer
+An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) text to image to text transformer
 
 ![](img/ComfyUI_00001_.png)
 
@@ -20,7 +20,7 @@ This node takes a prompt that can influence the ouput, for example, if you put "
 ![Alt text](img/th-406341032.jpg) \
 _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the words "Make America Great Again" written next to him._
 
-**At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.**
+**At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.** The model file is about 6GB in size.
 
 [See example outputs and workflows](examples/examples.md)
 
