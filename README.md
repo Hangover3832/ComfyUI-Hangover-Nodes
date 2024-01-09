@@ -10,7 +10,7 @@
 - Save Image with or without Metadata
 - Scale an Image To A Bounding Box
 
-### Node: Microsoft kosmos-2 for ComfyuiUI
+### Node: Microsoft kosmos-2 for ComfyUI
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) text & image to text transformer
 
