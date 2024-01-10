@@ -16,9 +16,6 @@ import numpy as np
 import gc
 import torch
 
-# device = "cuda" if torch.cuda.is_available() else "cpu"
-
-
 class MsKosmos2:
     HUGGINGFACE_MODEL_NAMES = ["microsoft/kosmos-2-patch14-224"] # other/newer models can be added here
     DEVICES = ["cpu", "gpu"] if torch.cuda.is_available() else  ["cpu"]
