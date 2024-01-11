@@ -21,7 +21,7 @@ This node takes a prompt that can influence the output, for example, if you put 
 ![Alt text](img/th-406341032.jpg)
 _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the words "Make America Great Again" written next to him._
 
-**At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.** The model file is about 6GB in size. It does not consume VRAM and the inference is done in CPU, yet quite fast.
+**At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.** The model file is about 6GB in size. ~~It does not consume VRAM and the inference is done in CPU, yet quite fast.~~ Update: The kosmos-2 node now has a cpu/gpu selector. Be aware that the model will eat up about 6GB of your precious VRAM in gpu mode! 
 
 [See example outputs and workflows](examples/examples.md)
 

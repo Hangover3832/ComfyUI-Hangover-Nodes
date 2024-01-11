@@ -10,18 +10,22 @@ Alex
 '''
 
 from PIL import Image
-from transformers import AutoProcessor, AutoModelForVision2Seq, Kosmos2Config
+from transformers import AutoProcessor, AutoModelForVision2Seq
 import torchvision.transforms as T
 import numpy as np
+import gc
+import torch
 
 class MsKosmos2:
     HUGGINGFACE_MODEL_NAMES = ["microsoft/kosmos-2-patch14-224"] # other/newer models can be added here
+    DEVICES = ["cpu", "gpu"] if torch.cuda.is_available() else  ["cpu"]
 
     def __init__(self):
         self.prefix = "<grounding> "
         self.model = None
         self.processor = None
         self.modelname = ""
+        self.device = ""
 
     @classmethod
     def INPUT_TYPES(s):
@@ -29,7 +33,8 @@ class MsKosmos2:
             "required": {
                 "image": ("IMAGE",),
                 "prompt": ("STRING", {"multiline": False, "default": "An image of"},),
-                "huggingface_model": (MsKosmos2.HUGGINGFACE_MODEL_NAMES,{"default": MsKosmos2.HUGGINGFACE_MODEL_NAMES[0]},)
+                "huggingface_model": (MsKosmos2.HUGGINGFACE_MODEL_NAMES, {"default": MsKosmos2.HUGGINGFACE_MODEL_NAMES[0]},),
+                "device": (MsKosmos2.DEVICES, {"default": MsKosmos2.DEVICES[0]},),
             }
         }
 
@@ -41,13 +46,19 @@ class MsKosmos2:
     OUTPUT_NODE = False
     CATEGORY = "Hangover"
 
-    def interrogate(self, image, prompt, huggingface_model):
-
-        if (self.model == None) or (self.processor == None) or (self.modelname != huggingface_model):
+    def interrogate(self, image, prompt, huggingface_model, device):
+        dev = "cuda" if device == "gpu" else "cpu"
+        if (self.model == None) or (self.processor == None) or (self.modelname != huggingface_model) or (device != self.device):
+            del self.model
+            del self.processor
+            gc.collect()
+            if (device == "cpu") and torch.cuda.is_available():
+                torch.cuda.empty_cache()
             print(f"kosmos2: loading model {huggingface_model}, please stand by....")
-            self.model = AutoModelForVision2Seq.from_pretrained(huggingface_model)
+            self.model = AutoModelForVision2Seq.from_pretrained(huggingface_model).to(dev)
             self.processor = AutoProcessor.from_pretrained(huggingface_model)
             self.modelname = huggingface_model
+            self.device = device
 
         descriptions = ""
         entity_str = ""
@@ -55,7 +66,7 @@ class MsKosmos2:
         for im in image:
             i = 255. * im.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-            inputs = self.processor(text=self.prefix+prompt, images=img, return_tensors="pt")
+            inputs = self.processor(text=self.prefix+prompt, images=img, return_tensors="pt").to(dev)
             generated_ids = self.model.generate(
                 pixel_values=inputs["pixel_values"],
                 input_ids=inputs["input_ids"],
