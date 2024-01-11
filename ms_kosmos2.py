@@ -10,7 +10,7 @@ Alex
 '''
 
 from PIL import Image
-from transformers import AutoProcessor, AutoModelForVision2Seq, Kosmos2Config
+from transformers import AutoProcessor, AutoModelForVision2Seq
 import torchvision.transforms as T
 import numpy as np
 import gc
