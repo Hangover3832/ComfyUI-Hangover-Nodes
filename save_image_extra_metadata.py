@@ -11,7 +11,6 @@ class SaveImage_NoWorkflow(SaveImage):
         return {"required": 
                     {"images": ("IMAGE", ), "filename_prefix": ("STRING", {"default": "ComfyUI"}),
                     "save_image": ("BOOLEAN", {"default": True}),
-                    "include_prompt": ("BOOLEAN", {"default": True}),
                     "include_workflow": ("BOOLEAN", {"default": True}),
                     },
                     
@@ -24,11 +23,10 @@ class SaveImage_NoWorkflow(SaveImage):
     OUTPUT_NODE = True
     CATEGORY = "Hangover"
 
-    def save_images(self, images, filename_prefix="ComfyUI", save_image = False, include_prompt=False, include_workflow=False, prompt=None, extra_pnginfo=None):
-        if not include_prompt:
-            prompt = None
+    def save_images(self, images, filename_prefix="ComfyUI", save_image = False, include_workflow=False, prompt=None, extra_pnginfo=None):
         if not include_workflow:
             extra_pnginfo = None
+            prompt = None
 
         if save_image:
             self.__init__()
