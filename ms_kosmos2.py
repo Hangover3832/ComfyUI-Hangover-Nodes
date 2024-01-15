@@ -15,6 +15,8 @@ import torchvision.transforms as T
 import numpy as np
 import gc
 import torch
+from comfy_extras.nodes_mask import MaskComposite
+
 
 class MsKosmos2:
     HUGGINGFACE_MODEL_NAMES = ["microsoft/kosmos-2-patch14-224"] # other/newer models can be added here
@@ -40,8 +42,8 @@ class MsKosmos2:
 
     # RETURN_TYPES = ("STRING", "STRING", "BBOX", "MASK")
     # RETURN_NAMES = ("description","keywords","bboxes", masks)
-    RETURN_TYPES = ("STRING", "STRING",)
-    RETURN_NAMES = ("description", "keywords",)
+    RETURN_TYPES = ("STRING", "STRING", "MASK",)
+    RETURN_NAMES = ("description", "keywords", "mask",)
     FUNCTION = "interrogate"
     OUTPUT_NODE = False
     CATEGORY = "Hangover"
@@ -62,7 +64,10 @@ class MsKosmos2:
 
         descriptions = ""
         entity_str = ""
-        # bboxlist = []
+        width = round(image.shape[2])
+        height = round(image.shape[1])
+        mask = torch.full((1, height, width), 0., dtype=torch.float32, device="cpu")
+
         for im in image:
             i = 255. * im.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
@@ -80,23 +85,23 @@ class MsKosmos2:
             # By default, the generated  text is cleanup and the entities are extracted.
             description, entities = self.processor.post_process_generation(generated_text)
             # entities = [('a snowman', (12, 21), [(0.390625, 0.046875, 0.984375, 0.828125)]), ('a fire', (41, 47), [(0.171875, 0.015625, 0.484375, 0.890625)])]
-
             descriptions += description + '\n'
+
             elist = []
             for entity_name, (start, end), bbox in entities:
-                '''
                 bbx = bbox[0]
-                b = (round(bbx[0] * img.width),
-                    round(bbx[1] * img.height),
-                    round((bbx[2] - bbx[0]) * img.width),
-                    round((bbx[3] - bbx[1]) * img.height)
-                )
-                bbxlist.append(b)
-                '''
+                x = round(bbx[0] * width)
+                y = round(bbx[1] * height)
+                w = round((bbx[2] - bbx[0]) * width)
+                h = round((bbx[3] - bbx[1]) * height)
+                print(x, y, w, h)
+                m = torch.full((1, h, w), 1., dtype=torch.float32, device="cpu")
+                mask = MaskComposite.combine(self, mask, m, x, y, "or")[0]
+
                 elist.append(entity_name)
 
             entity_str += ",".join(elist)
             entity_str += '\n'
             # bboxlist.append(bbxlist)
 
-        return (descriptions, entity_str,)
+        return (descriptions, entity_str, mask,)
