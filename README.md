@@ -14,6 +14,7 @@
 
 * Save Image now has only 1 button to include/exclude metadata. You now can disable saving the image, thus it acts as an image preview only. Note that you can still save the image, by right clicking on it, that will include or exclude the workflow according to the setting.
 * kosmos-2 interrogator now outputs a mask indicating the recognized elements in the image.
+* "Image Scale To Bounding Box" now can pad the image to its given box size (see [examples](examples/examples.md))
 
 ### Node: Microsoft kosmos-2 for ComfyUI
 
@@ -21,7 +22,7 @@ An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmo
 
 ![](img/ComfyUI_00001_.png)
 
-This node takes a prompt that can influence the output, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image: \
+This node takes a prompt that can influence the output, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image: 
 ![Alt text](img/th-406341032.jpg)
 _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the words "Make America Great Again" written next to him._
 
@@ -33,7 +34,7 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 
 ### Node: Save Image w/o Metadata
 
-![](img/workflow.png) \
+![](img/workflow.png) 
 With this custom save image node, you can include or exclude the ComfyUI workflow metadata in the saved image. It is a derivation of ComfyUI's built-in save image node.
 
 ---
