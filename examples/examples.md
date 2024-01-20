@@ -1,4 +1,4 @@
-### kosmos-2 examples:
+## kosmos-2 examples:
 (Non cherry picked)
 
 <table>
@@ -74,5 +74,12 @@ _**Example workflow:** generate a combination of two images_
 
 ![Alt text](../img/batch_process.png) \
 _**Batch process images from a directory:** Set the Image Index node to 0 and auto increment, and activate "Auto Queue". ComfyUI will stop with an error when finished._
+
+---
+
+## Image scale bounding box examples
+
+![Alt text](../img/scale_openpose.png) \
+_Automatic fit an openpose image to the output image size_
 
 ---

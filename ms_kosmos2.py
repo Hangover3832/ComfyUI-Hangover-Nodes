@@ -2,8 +2,6 @@
 An implementation of Microsoft kosmos-2 image to text transformer.
 https://huggingface.co/microsoft/kosmos-2-patch14-224
 
-ToDo: Output bboxes and/or masks
-
 https://github.com/Hangover3832
 
 Alex
