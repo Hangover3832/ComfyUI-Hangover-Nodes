@@ -27,7 +27,8 @@ An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmo
 ![](img/ComfyUI_00001_.png)
 
 This node takes a prompt that can influence the output, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:
-![Alt text](img/th-406341032.jpg)
+
+![Alt text](img/th-406341032.jpg) \
 _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the words "Make America Great Again" written next to him._
 
 **At the first start, the kosmos-2 model files will be downloaded from huggingface. Please be patient.** The model file is about 6GB in size. There is a cpu/gpu selector, but be aware that the model will eat up about 6GB of your precious VRAM in gpu mode!
