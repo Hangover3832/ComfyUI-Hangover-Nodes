@@ -83,3 +83,8 @@ _**Batch process images from a directory:** Set the Image Index node to 0 and au
 _Automatic fit an openpose image to the output image size_
 
 ---
+
+## Make Inpainting Model example
+
+![Alt text](../img/inpaint_model_example.png) \
+_Perfect inpainting with an appropriate inpainting model_
