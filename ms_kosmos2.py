@@ -102,7 +102,7 @@ class MsKosmos2:
                 y = round(bbx[1] * height)
                 w = round((bbx[2] - bbx[0]) * width)
                 h = round((bbx[3] - bbx[1]) * height)
-                print(x, y, w, h)
+                print(f"kosmos-2 entity '{entity_name}' at {x}, {y}, {w}, {h}")
                 m = torch.full((1, h, w), 1., dtype=torch.float32, device="cpu")
                 mask = MaskComposite.combine(self, mask, m, x, y, "or")[0]
 
@@ -110,6 +110,5 @@ class MsKosmos2:
 
             entity_str += ",".join(elist)
             entity_str += '\n'
-            # bboxlist.append(bbxlist)
 
         return (descriptions, entity_str, mask,)
