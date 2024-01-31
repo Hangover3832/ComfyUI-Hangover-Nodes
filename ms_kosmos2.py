@@ -35,6 +35,7 @@ class MsKosmos2:
                 "prompt": ("STRING", {"multiline": False, "default": "An image of"},),
                 "huggingface_model": (MsKosmos2.HUGGINGFACE_MODEL_NAMES, {"default": MsKosmos2.HUGGINGFACE_MODEL_NAMES[0]},),
                 "device": (MsKosmos2.DEVICES, {"default": MsKosmos2.DEVICES[0]},),
+                "strip_prompt": ("BOOLEAN", {"default": True},),
             }
         }
 
@@ -46,7 +47,7 @@ class MsKosmos2:
     OUTPUT_NODE = False
     CATEGORY = "Hangover"
 
-    def interrogate(self, image, prompt, huggingface_model, device):
+    def interrogate(self, image, prompt, huggingface_model, device, strip_prompt):
         dev = "cuda" if device == "gpu" else "cpu"
         if (self.model == None) or (self.processor == None) or (self.modelname != huggingface_model) or (device != self.device):
             del self.model
@@ -69,7 +70,11 @@ class MsKosmos2:
         for im in image:
             i = 255. * im.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-            inputs = self.processor(text=self.prefix+prompt, images=img, return_tensors="pt").to(dev)
+            
+            # generate text
+            prompt_full = self.prefix + prompt
+
+            inputs = self.processor(text=prompt_full, images=img, return_tensors="pt").to(dev)
             generated_ids = self.model.generate(
                 pixel_values=inputs["pixel_values"],
                 input_ids=inputs["input_ids"],
@@ -80,7 +85,12 @@ class MsKosmos2:
                 max_new_tokens=128,
             )
             generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-            # By default, the generated  text is cleanup and the entities are extracted.
+
+            # delete prompt
+            if strip_prompt == True:
+                generated_text = generated_text.replace(prompt_full, '').strip()
+
+            # By default, the generated text is cleanup and the entities are extracted.
             description, entities = self.processor.post_process_generation(generated_text)
             # entities = [('a snowman', (12, 21), [(0.390625, 0.046875, 0.984375, 0.828125)]), ('a fire', (41, 47), [(0.171875, 0.015625, 0.484375, 0.890625)])]
             descriptions += description + '\n'
@@ -92,7 +102,7 @@ class MsKosmos2:
                 y = round(bbx[1] * height)
                 w = round((bbx[2] - bbx[0]) * width)
                 h = round((bbx[3] - bbx[1]) * height)
-                print(x, y, w, h)
+                print(f"kosmos-2 entity '{entity_name}' at {x}, {y}, {w}, {h}")
                 m = torch.full((1, h, w), 1., dtype=torch.float32, device="cpu")
                 mask = MaskComposite.combine(self, mask, m, x, y, "or")[0]
 
@@ -100,6 +110,5 @@ class MsKosmos2:
 
             entity_str += ",".join(elist)
             entity_str += '\n'
-            # bboxlist.append(bbxlist)
 
         return (descriptions, entity_str, mask,)

@@ -10,6 +10,7 @@
 * kosmos-2 interrogator now outputs a mask indicating the recognized elements in the image.
 * "Image Scale To Bounding Box" now can pad the image to its given box size ([examples](examples/examples.md)).
 * New node: Make inpainting model.
+* Kosmos-2 update: Ability to strip out the prompt from the response (credit to za-wa-n-go).
 
 ## Nodes overview:
 
