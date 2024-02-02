@@ -33,8 +33,8 @@ class MsKosmos2:
             "required": {
                 "image": ("IMAGE",),
                 "prompt": ("STRING", {"multiline": False, "default": "An image of"},),
-                "huggingface_model": (MsKosmos2.HUGGINGFACE_MODEL_NAMES, {"default": MsKosmos2.HUGGINGFACE_MODEL_NAMES[0]},),
-                "device": (MsKosmos2.DEVICES, {"default": MsKosmos2.DEVICES[0]},),
+                "huggingface_model": (s.HUGGINGFACE_MODEL_NAMES, {"default": s.HUGGINGFACE_MODEL_NAMES[0]},),
+                "device": (s.DEVICES, {"default": s.DEVICES[0]},),
                 "strip_prompt": ("BOOLEAN", {"default": True},),
             }
         }
