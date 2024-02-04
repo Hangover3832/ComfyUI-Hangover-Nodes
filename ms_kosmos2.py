@@ -38,16 +38,14 @@ class MsKosmos2:
             }
         }
 
-    # RETURN_TYPES = ("STRING", "STRING", "BBOX", "MASK")
-    # RETURN_NAMES = ("description","keywords","bboxes", masks)
     RETURN_TYPES = ("STRING", "STRING", "MASK",)
     RETURN_NAMES = ("description", "keywords", "mask",)
     FUNCTION = "interrogate"
     OUTPUT_NODE = False
     CATEGORY = "Hangover"
 
-    def interrogate(self, image, prompt, huggingface_model, device, strip_prompt):
-        dev = "cuda" if device == "gpu" else "cpu"
+    def interrogate(self, image:torch.Tensor, prompt:str, huggingface_model:str, device:str, strip_prompt:bool):
+        dev = "cuda" if device.lower() == "gpu" else "cpu"
         if (self.model == None) or (self.processor == None) or (self.modelname != huggingface_model) or (device != self.device):
             del self.model
             del self.processor
