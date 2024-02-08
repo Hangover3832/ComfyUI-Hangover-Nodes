@@ -36,6 +36,8 @@ _**kosmos-2 output:** An image of Donald Trump giving the peace sign with the wo
 
 [See example outputs and workflows](examples/examples.md)
 
+Also see [Moondream](https://github.com/Hangover3832/ComfyUI-Hangover-Moondream)
+
 ---
 
 ### Node: Save Image w/o Metadata
