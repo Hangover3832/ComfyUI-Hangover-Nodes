@@ -6,11 +6,11 @@
 
 ## Updates
 
-* Save Image now has only 1 button to include/exclude metadata. You now can disable saving the image, thus it acts as an image preview only. Note that you can still save the image, by right clicking on it, that will include or exclude the workflow according to the setting.
-* kosmos-2 interrogator now outputs a mask indicating the recognized elements in the image.
-* "Image Scale To Bounding Box" now can pad the image to its given box size ([examples](examples/examples.md)).
-* New node: Make inpainting model.
-* Kosmos-2 update: Ability to strip out the prompt from the response (credit to za-wa-n-go).
+* Save Image now has only 1 button to include/exclude metadata. You now can disable saving the image, thus it acts as an image preview only. Note that you can still save the image, by right clicking on it, that will include or exclude the workflow according to the setting. 🆕
+* kosmos-2 interrogator now outputs a mask indicating the recognized elements in the image. 🆕
+* "Image Scale To Bounding Box" now can pad the image to its given box size ([examples](examples/examples.md)). 🆕
+* New node: Make inpainting model. 🆕
+* Kosmos-2 update: Ability to strip out the prompt from the response (credit to za-wa-n-go). 🆕
 
 ## Nodes overview:
 
@@ -18,6 +18,8 @@
 - Stable Diffusion Privacy: Save Image with or without Metadata
 - Scale an Image To A Bounding Box
 - Easily make an inpainting version of any SD1.5 model
+
+
 
 ---
 
