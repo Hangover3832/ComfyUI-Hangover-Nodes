@@ -161,4 +161,3 @@ cython_debug/
 
 .vscode/
 test.py
-moondream.py
