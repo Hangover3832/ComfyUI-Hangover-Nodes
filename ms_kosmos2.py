@@ -53,8 +53,8 @@ class MsKosmos2:
             if (device == "cpu") and torch.cuda.is_available():
                 torch.cuda.empty_cache()
             print(f"kosmos2: loading model {huggingface_model}, please stand by....")
-            self.model = AutoModelForVision2Seq.from_pretrained(huggingface_model).to(dev)
-            self.processor = AutoProcessor.from_pretrained(huggingface_model)
+            self.model = AutoModelForVision2Seq.from_pretrained(huggingface_model, cache_dir="ComfyUI/models").to(dev)
+            self.processor = AutoProcessor.from_pretrained(huggingface_model, cache_dir="ComfyUI/models")
             self.modelname = huggingface_model
             self.device = device
 
