@@ -1,3 +1,10 @@
+"""
+@author: AlexL
+@title: ComfyUI-Hangover-Image_Scale_Bouning_Box
+@nickname: Hangover-Image_Scale_Bouning_Box
+@description: Scales an input image into a given box size, whereby the aspect ratio keeps retained.
+"""
+
 from nodes import MAX_RESOLUTION
 import comfy.utils
 import torchvision.transforms.functional as F

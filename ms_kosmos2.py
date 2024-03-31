@@ -1,11 +1,14 @@
-'''
-An implementation of Microsoft kosmos-2 image to text transformer.
-https://huggingface.co/microsoft/kosmos-2-patch14-224
+"""
+@author: AlexL
+@title: ComfyUI-Hangover-Kosmos2
+@nickname: Hangover-ms_kosmos2
+@description: An implementation of Microsoft kosmos-2 image to text transformer.
+"""
 
-https://github.com/Hangover3832
+# https://huggingface.co/microsoft/kosmos-2-patch14-224
 
-Alex
-'''
+# by https://github.com/Hangover3832
+
 
 from PIL import Image
 from transformers import AutoProcessor, AutoModelForVision2Seq

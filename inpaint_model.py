@@ -1,6 +1,11 @@
-# from comfy_extras.nodes_model_merging import ModelAdd, ModelSubtract
+"""
+@author: AlexL
+@title: ComfyUI-Hangover-Make_Inpaint_Model
+@nickname: Hangover-Inpaint_Model
+@description: Easy make an inpaint version of any model on the fly.
+"""
+
 import folder_paths
-# import os
 import comfy.sd
 
 class MakeInpaintModel():

@@ -1,3 +1,10 @@
+"""
+@author: AlexL
+@title: ComfyUI-Hangover-Save_Image
+@nickname: Hangover-Save_Image_Extra_Metadata
+@description: Display, save or not save image, with or without extra metadata.
+"""
+
 from nodes import SaveImage
 import folder_paths
 import random
