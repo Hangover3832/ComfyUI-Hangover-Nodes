@@ -27,8 +27,7 @@
 
 An implementation of [Microsoft kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) text & image to text transformer .
 
-![](img/ComfyUI_00001_.png)
-
+![](img/ComfyUI_00001_.png) \
 This node takes a prompt that can influence the output, for example, if you put "Very detailed, an image of", it outputs more details than just "An image of". kosmos-2 is quite impressive, it recognizes famous people and written text in the image:
 
 ![Alt text](img/th-406341032.jpg) \
@@ -44,8 +43,8 @@ Also see [Moondream](https://github.com/Hangover3832/ComfyUI-Hangover-Moondream)
 
 ### Node: Save Image w/o Metadata
 
-![](img/workflow.png)
-With this custom save image node, you can include or exclude the ComfyUI workflow metadata in the saved image. It is a derivation of ComfyUI's built-in save image node.
+![](img/workflow.png)\
+With this custom save image node, you can preview or save, include or exclude the ComfyUI workflow metadata in the image. It is a derivation of ComfyUI's built-in save image node. Note that you can always right click on the image to save, it will also include the workflow if activated.
 
 ---
 
@@ -53,15 +52,14 @@ With this custom save image node, you can include or exclude the ComfyUI workflo
 
 This node scales an input image into a given box size, whereby the aspect ratio keeps retained. The image can also be padded to the full box size with an arbitrary color.
 
-![Alt text](img/bounding_box.png)
-
+![Alt text](img/bounding_box.png) \
 [See example outputs and workflows](examples/examples.md)
 
 ---
 
 ### Node: Make Inpainting Model for SD1.5
 
-![Alt text](img/make_inpaint_model.PNG)
+![Alt text](img/make_inpaint_model.PNG) \
 This node easy creates an inpainting version of any SD1.5 model on the fly. No need to have GB's of inpainting models laying on your drive. This is very useful for any kind of inpainting nodes like detailers. Make sure you have the original SD1.5 models from [RunwayML](https://huggingface.co/runwayml) in your models folder:
 
 - [v1-5-pruned-emaonly.ckpt](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned-emaonly.ckpt) or[v1-5-pruned-emaonly.safetensors](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned-emaonly.safetensors)
