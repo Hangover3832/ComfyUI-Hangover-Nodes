@@ -16,10 +16,31 @@ import numpy as np
 import gc
 import torch
 from comfy_extras.nodes_mask import MaskComposite
+from folder_paths import models_dir, folder_names_and_paths, add_model_folder_path, get_folder_paths, get_filename_list, get_full_path
+import os
 
+kosmos2_dir = "kosmos2"
+huggingface_name = "microsoft/"
+kosmos2_model_path = f"{models_dir}/{kosmos2_dir}"
+
+try:
+    if kosmos2_model_path not in get_folder_paths(kosmos2_dir):
+        raise KeyError
+except KeyError:
+    add_model_folder_path(kosmos2_dir, kosmos2_model_path)
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 class MsKosmos2:
-    HUGGINGFACE_MODEL_NAMES = ["microsoft/kosmos-2-patch14-224"] # other/newer models can be added here
+    MODEL_NAMES = ["kosmos-2-patch14-224"] # other/newer models can be added here
     DEVICES = ["cpu", "gpu"] if torch.cuda.is_available() else  ["cpu"]
 
     def __init__(self):
@@ -35,7 +56,7 @@ class MsKosmos2:
             "required": {
                 "image": ("IMAGE",),
                 "prompt": ("STRING", {"multiline": False, "default": "An image of"},),
-                "huggingface_model": (s.HUGGINGFACE_MODEL_NAMES, {"default": s.HUGGINGFACE_MODEL_NAMES[0]},),
+                "model": (s.MODEL_NAMES, {"default": s.MODEL_NAMES[0]},),
                 "device": (s.DEVICES, {"default": s.DEVICES[0]},),
                 "strip_prompt": ("BOOLEAN", {"default": True},),
             }
@@ -47,18 +68,33 @@ class MsKosmos2:
     OUTPUT_NODE = False
     CATEGORY = "Hangover"
 
-    def interrogate(self, image:torch.Tensor, prompt:str, huggingface_model:str, device:str, strip_prompt:bool):
+    def interrogate(self, image:torch.Tensor, prompt:str, model:str, device:str, strip_prompt:bool):
         dev = "cuda" if device.lower() == "gpu" else "cpu"
-        if (self.model == None) or (self.processor == None) or (self.modelname != huggingface_model) or (device != self.device):
+        model_paths = get_folder_paths(kosmos2_dir)
+
+        # try to locate local model
+        def model_in_path() -> str | None:
+            for p in model_paths:
+                result = f"{p}/{model}"
+                if os.path.isdir(result):
+                    return result
+            return None
+        model_path = model_in_path()
+
+        if not model_path:
+            # no local model, use huggingface hub
+            model_path = f"{huggingface_name}{model}"
+
+        if (self.model == None) or (self.processor == None) or (self.modelname != model) or (device != self.device):
             del self.model
             del self.processor
             gc.collect()
             if (device == "cpu") and torch.cuda.is_available():
                 torch.cuda.empty_cache()
-            print(f"kosmos2: loading model {huggingface_model}, please stand by....")
-            self.model = AutoModelForVision2Seq.from_pretrained(huggingface_model).to(dev)
-            self.processor = AutoProcessor.from_pretrained(huggingface_model)
-            self.modelname = huggingface_model
+            print(f"kosmos2: loading model {model_path}, please stand by....")
+            self.model = AutoModelForVision2Seq.from_pretrained(model_path).to(dev)
+            self.processor = AutoProcessor.from_pretrained(model_path)
+            self.modelname = model
             self.device = device
 
         descriptions = ""
