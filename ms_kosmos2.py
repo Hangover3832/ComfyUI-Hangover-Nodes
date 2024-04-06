@@ -40,7 +40,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 class MsKosmos2:
-    MODEL_NAMES = ["kosmos-2-patch14-224"] # other/newer models can be added here
+    MODEL_NAMES = ["microsoft/kosmos-2-patch14-224"] # other/newer models can be added here
     DEVICES = ["cpu", "gpu"] if torch.cuda.is_available() else  ["cpu"]
 
     def __init__(self):
@@ -70,6 +70,7 @@ class MsKosmos2:
 
     def interrogate(self, image:torch.Tensor, prompt:str, model:str, device:str, strip_prompt:bool):
         dev = "cuda" if device.lower() == "gpu" else "cpu"
+        model = model.replace('microsoft/', '')
         model_paths = get_folder_paths(kosmos2_dir)
 
         # try to locate local model
