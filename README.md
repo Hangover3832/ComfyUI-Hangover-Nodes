@@ -51,7 +51,7 @@ The kosmos2 base folder can also be configured in `extra_model_paths.yaml`
 
 [See example outputs and workflows](examples/examples.md)
 
-Also see [Moondream](https://github.com/Hangover3832/ComfyUI-Hangover-Moondream)
+Also see [Moondream](https://github.com/Hangover3832/ComfyUI-Hangover-Moondream), [Recognize Anything Model](https://github.com/Hangover3832/ComfyUI-Hangover-Recognize_Anything)
 
 ---
 
