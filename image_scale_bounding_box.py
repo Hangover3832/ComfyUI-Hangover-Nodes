@@ -7,10 +7,8 @@
 
 from nodes import MAX_RESOLUTION
 import comfy.utils
-import torchvision.transforms.functional as F
-from PIL import Image
+import torch.nn.functional as F
 import torch
-import numpy as np
 
 
 class ImageScaleBoundingBox:
@@ -34,20 +32,18 @@ class ImageScaleBoundingBox:
                 }
 
     def upscale(self, image, upscale_method, box_width, box_height, padding, pad_color):
-        samples = image.movedim(-1,1)
-        w = samples.shape[3]
-        h = samples.shape[2]
+        w = image.shape[2]
+        h = image.shape[1]
         scale_by = min(box_width/w, box_height/h)
         new_width = round(w * scale_by)
         new_height = round(h * scale_by)
-        s = comfy.utils.common_upscale(samples, new_width, new_height, upscale_method, "disabled")
-        s = s.movedim(1,-1)
+        samples = comfy.utils.common_upscale(image.movedim(-1,1), new_width, new_height, upscale_method, "disabled").movedim(1,0)
         if padding in ImageScaleBoundingBox.PADDING:
-            # in case padding == "center":
+            # if padding == "center":
             pad_left = (box_width - new_width) // 2
             pad_right = box_width - new_width - pad_left
             pad_top = (box_height - new_height) // 2
-            pad_bottom = box_height - new_height -pad_top # ensure that we do not get any rounding error in the output image size
+            pad_bottom = box_height - new_height - pad_top # ensure that we do not get any rounding error in the output image size
             if padding == "top":
                 pad_bottom = 0
                 pad_top = box_height - new_height
@@ -60,12 +56,15 @@ class ImageScaleBoundingBox:
             elif padding == "bottom":
                 pad_top = 0
                 pad_bottom = box_height - new_height
+            pad = (pad_left, pad_right, pad_top, pad_bottom)
 
-            i = Image.fromarray(np.clip(255. * s.cpu().numpy().squeeze(), 0, 255).astype(np.uint8))
-            r = (pad_color & 0xFF0000) >> 16 # I know this & is not necessary, it's for readability
-            g = (pad_color & 0x00FF00) >> 8
-            b = (pad_color & 0x0000FF)
-            i = F.pad(img=i, padding=[pad_left, pad_top, pad_right, pad_bottom], fill=(r, g, b,), padding_mode="constant")
-            s = torch.from_numpy(np.array(i).astype(np.float32) / 255.0).unsqueeze(0)
+            r = ((pad_color & 0xFF0000) >> 16) / 255. # I know this & is not necessary, it's for readability
+            g = ((pad_color & 0x00FF00) >> 8)  / 255.
+            b = (pad_color & 0x0000FF) / 255.
+            ir = F.pad(input=samples[0], pad=pad, mode='constant', value = r)
+            ig = F.pad(input=samples[1], pad=pad, mode='constant', value = g)
+            ib = F.pad(input=samples[2], pad=pad, mode='constant', value = b)
+            samples = torch.stack([ir,ig,ib])
 
-        return (s,)
+        samples = samples.movedim(0,-1)
+        return (samples,)
