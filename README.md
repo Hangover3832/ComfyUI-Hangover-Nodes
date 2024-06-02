@@ -12,6 +12,7 @@
 * New node: Make inpainting model. 🆕
 * Kosmos-2 update: Ability to strip out the prompt from the response (credit to za-wa-n-go). 🆕
 * Kosmos-2 now supports manually downloadad model folder location. 🆕
+* Scale Image Bouning Box can now be used in baches. 🆕
 
 ## Nodes overview:
 
