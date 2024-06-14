@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-hangover-nodes"
+description = "Nodes: MS kosmos-2 Interrogator, Save Image w/o Metadata, Image Scale Bounding Box. An implementation of Microsoft [a/kosmos-2](https://huggingface.co/microsoft/kosmos-2-patch14-224) image to text transformer."
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["torchvision", "Pillow", "transformers>=4.35.0", "numpy", "torch"]
+
+[project.urls]
+Repository = "https://github.com/Hangover3832/ComfyUI-Hangover-Nodes"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Hangover-Nodes"
+Icon = ""
