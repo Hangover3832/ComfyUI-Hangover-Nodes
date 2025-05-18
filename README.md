@@ -1,5 +1,7 @@
 # Custom nodes for ComfyUI
 
+## This repository will no longer be maintained.
+
 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) is the awesome stable diffusion GUI and backend.
 
 **Please note that this repository is currently a (learning) work in progress and might change anytime.** It has been tested in Windows 10 only so far.
